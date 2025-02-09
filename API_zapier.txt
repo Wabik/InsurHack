@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+ title: API przetwarzania danych z rozmowy z klientem
+ version: 1.0.0
+ description: >
+  API służy do przyjmowania danych z rozmowy z klientem, w których wyłuskiwane są najważniejsze informacje:
+   - imię
+   - nazwisko
+   - pesel (11-cyfrowy numer)
+   - adres e-mail
+   - rodzaj ubezpieczenia
+  Po poprawnym przyjęciu i walidacji danych, serwis powinien opakować je w plik JSON i przesłać metodą POST do webhooka Zapier: [Zapier Webhook](https://hooks.zapier.com/hooks/catch/21628627/2aaszgt/).
+servers:
+ - url: https://hooks.zapier.com/hooks/catch/21628627/2aaszgt/
+  description: Podstawowy adres API
+paths:
+ /przetworzDane:
+  post:
+   summary: Przyjmuje dane z rozmowy i wysyła je do webhooka Zapier
+   description: >
+    Endpoint przyjmuje dane w formacie JSON, weryfikuje pola i w przypadku sukcesu przekazuje je do zdefiniowanego
+    webhooka.
+   operationId: przetworzDane
+   security:
+    - ApiKeyAuth: []
+   requestBody:
+    description: Obiekt zawierający dane klienta
+    required: true
+    content:
+     application/json:
+      schema:
+       type: object
+       properties:
+        imie:
+         type: string
+         description: Imię klienta
+        nazwisko:
+         type: string
+         description: Nazwisko klienta
+        pesel:
+         type: string
+         description: Numer PESEL klienta (11 cyfr)
+         pattern: ^[0-9]{11}$
+        email:
+         type: string
+         format: email
+         description: Adres e-mail klienta
+        rodzaj_ubezpieczenia:
+         type: string
+         description: Rodzaj ubezpieczenia wybrany przez klienta
+       required:
+        - imie
+        - nazwisko
+        - pesel
+        - email
+        - rodzaj_ubezpieczenia
+   responses:
+    "200":
+     description: Dane zostały pomyślnie przetworzone i wysłane do webhooka.
+     content:
+      application/json:
+       schema:
+        type: object
+        properties:
+         status:
+          type: string
+          example: success
+         message:
+          type: string
+          example: Dane zostały przekazane do Zapier.
+    "400":
+     description: Nieprawidłowe dane wejściowe
+     content:
+      application/json:
+       schema:
+        type: object
+        properties:
+         status:
+          type: string
+          example: error
+         message:
+          type: string
+          example: Błędne lub niekompletne dane.
+    "401":
+     description: Brak autoryzacji
+     content:
+      application/json:
+       schema:
+        type: object
+        properties:
+         status:
+          type: string
+          example: unauthorized
+         message:
+          type: string
+          example: Niepoprawny lub brak klucza API.
+components:
+ schemas: {}
+ securitySchemes:
+  ApiKeyAuth:
+   type: apiKey
+   in: header
+   name: X-API-Key
+ callbacks:
+  ZapierWebhook:
+   "{$request.body#/callbackUrl}":
+    post:
+     summary: Wywołanie webhooka Zapier
+     requestBody:
+      description: Dane przesyłane do Zapier
+      required: true
+      content:
+       application/json:
+        schema:
+         type: object
+         properties:
+          imie:
+           type: string
+          nazwisko:
+           type: string
+          pesel:
+           type: string
+          email:
+           type: string
+          rodzaj_ubezpieczenia:
+           type: string
+         required:
+          - imie
+          - nazwisko
+          - pesel
+          - email
+          - rodzaj_ubezpieczenia
+     responses:
+      "200":
+       description: Webhook Zapier został wywołany pomyślnie.
