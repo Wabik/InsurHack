@@ -44,8 +44,9 @@ Kod 'items_to_use.ipynb"
 *   Poznanie nowych ludzi 
 
 ## Co Dalej?
-*   Wydobywanie więcej informacji 
+*   Wydobywanie więcej informacji: typ samochodu, który wariant oczekuje (maxi, opti, mini)
 *   Zwracanie do chatu wydobytych danych
+*   Zastąpienie notebooka skryptami
 
 ---
 
