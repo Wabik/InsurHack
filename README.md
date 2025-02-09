@@ -38,13 +38,13 @@ Kod 'items_to_use.ipynb"
 *   Scalenie narzędzi
 
 
-## Dokonania, Z Których Jesteśmy Dumni
+## Dokonania, z których Jesteśmy Dumni
 *   Wyciągnięcie wniosków
 *   Nauka nowych technologii 
 *   Poznanie nowych ludzi 
 
 ## Co Dalej?
-*   Wydobywanie więcej informacji: typ samochodu, który wariant oczekuje (maxi, opti, mini)
+*   Wydobywanie więcej informacji: typ samochodu, który wariant oczekuje klient (maxi, opti, mini)
 *   Zwracanie do chatu wydobytych danych
 *   Zastąpienie notebooka skryptami
 
