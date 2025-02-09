@@ -32,6 +32,13 @@ Kod 'items_to_use.ipynb"
 *   Python 3.12.7
 
 
+## Zastosowania technologia
+
+*   Python
+*   Zapir
+*   Strip
+*   OpenAPI
+
 ## Wyzwania, Przed Którymi Stanęliśmy
 
 *   Poznanie nowych narzędzi. 
