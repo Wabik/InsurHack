@@ -21,6 +21,11 @@ Nasz ChatBot:
 *   **Podsumowuje decyzje:** Analizuje zebrane informacje i przedstawia klientowi podsumowanie jego preferencji.
 *   **Wysyła spersonalizowane oferty ubezpieczeniowe:** Na podstawie podsumowania generuje i prezentuje dopasowane oferty ubezpieczeniowe.
 
+Kod 'items_to_use.ipynb" 
+
+*   Z podsumowania wykonanego przez bota wyciąga niezbędne informacje, które są potrzebne podczas wysyłania zapytań do 'iapi.hack.insurhack.pl'.
+*   Wysyła infromacje po API i finalnie zwraca wartość raty z propozycji. 
+
 
 ## Wymagania Techniczne
 
@@ -29,12 +34,19 @@ Nasz ChatBot:
 
 ## Wyzwania, Przed Którymi Stanęliśmy
 
+*   Poznanie nowych narzędzi. 
+*   Scalenie narzędzi
+
 
 ## Dokonania, Z Których Jesteśmy Dumni
-
+*   Wyciągnięcie wniosków
+*   Nauka nowych technologii 
+*   Poznanie nowych ludzi 
 
 ## Co Dalej?
+*   Wydobywanie więcej informacji 
+*   Zwracanie do chatu wydobytych danych
 
 ---
 
-Dziękujemy za sprawdzenie naszego projektu! Mamy nadzieję, że Ci się podoba!
+Dziękujemy za sprawdzenie naszego projektu! Mamy nadzieję, że Wam się spodobał
